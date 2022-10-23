@@ -9,7 +9,7 @@ knightType::knightType(bool color) : chessPiece(color)
 bool knightType::move(char startRow, int startCol, char endRow,
                       int endCol, chessPiece ***board)
 {
-    // checks if end pos is not null or if has a piece of the smae color
+    // checks if end pos is not null or if has a piece of the same color
     if (board[endRow - 'A'][endCol - 1] != nullptr)
     {
         if (board[endRow - 'A'][endCol - 1]->getPlayerType() ==
@@ -28,7 +28,7 @@ bool knightType::move(char startRow, int startCol, char endRow,
     }
     return true;
 }
-
+// when piece is deleted cout that it was taken
 knightType::~knightType()
 {
     std::cout << "Knight Taken.\n";
