@@ -1,6 +1,6 @@
 #include "queenType.h"
 #include <iostream>
-
+// calls parent class constuctor and sets color
 queenType::queenType(bool color) : chessPiece(color)
 {
 }
