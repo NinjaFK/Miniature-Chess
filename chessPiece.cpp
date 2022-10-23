@@ -1,6 +1,5 @@
 #include <iostream>
 #include "chessPiece.h"
-
 // sets the color based into base class color
 chessPiece::chessPiece(bool color)
 {
