@@ -9,20 +9,24 @@ knightType::knightType(bool color) : chessPiece(color)
 bool knightType::move(char startRow, int startCol, char endRow,
                       int endCol, chessPiece ***board)
 {
+    int endR = endRow - 'A';
+    int endC = endCol - 1;
+    int startR = startRow - 'A';
+    int startC = startCol - 1;
     // checks if end pos is not null or if has a piece of the same color
-    if (board[endRow - 'A'][endCol - 1] != nullptr)
+    if (board[endR][endC] != nullptr)
     {
-        if (board[endRow - 'A'][endCol - 1]->getPlayerType() ==
+        if (board[endR][endC]->getPlayerType() ==
             this->getPlayerType())
         {
             return false;
         }
     }
     // check if move possible
-    if (!((abs((startRow - 'A') - (endRow - 'A')) == 2 &&
-           abs((startCol - 1) - (endCol - 1)) == 1) ||
-          (abs((startRow - 'A') - (endRow - 'A')) == 1 &&
-           abs((startCol - 1) - (endCol - 1)) == 2)))
+    if (!((abs((startR) - (endR)) == 2 &&
+           abs((startC) - (endC)) == 1) ||
+          (abs((startR) - (endR)) == 1 &&
+           abs((startC) - (endC)) == 2)))
     {
         return false;
     }
