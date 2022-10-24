@@ -23,6 +23,6 @@ int main()
 
     // std::cout << board[6][6]->move('G', 7, 'E', 6, board) << '\n';
     // std::cout << board[6][6]->move('G', 7, 'F', 5, board) << '\n';
-    std::cout << board[6][6]->move('G', 7, 'E', 9, board) << '\n';
+    std::cout << board[6][6]->move('G', 7, 'E', 6, board) << '\n';
     return 0;
 }
