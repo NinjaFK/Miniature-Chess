@@ -1,8 +1,8 @@
 #include <iostream>
-#include "knightType.h"
+//#include "knightType.h"
 #include "chessPiece.h"
 #include "rookType.h"
-#include "bishopType.h"
+//#include "bishopType.h"
 
 #define RESET "\033[0m"
 #define RED "\033[31m"
@@ -25,7 +25,8 @@ int main()
     // board[4][4] = new bishopType(false);
     // board[3][5] = new bishopType(false);
     board[6][6] = new rookType(false);
-    board[5][6] = new rookType(false);
+    // board[5][6] = new rookType(false);
+    board[6][3] = new rookType(false);
 
     // knight moves
     // std::cout << board[6][6]->move('G', 7, 'E', 6, board) << '\n';
@@ -50,11 +51,17 @@ int main()
     // std::cout << board[4][4]->move('E', 5, 'C', 7, board) << '\n';
 
     // rook
-    // std::cout << board[6][6]->move('G', 7, 'F', 7, board) << '\n';
-    // std::cout << board[6][6]->move('G', 7, 'G', 8, board) << '\n';
-    // std::cout << board[6][6]->move('G', 7, 'H', 7, board) << '\n';
-    // std::cout << board[6][6]->move('G', 7, 'G', 6, board) << '\n';
-    // std::cout << board[6][6]->move('G', 7, 'F', 8, board) << '\n';
+    std::cout << board[6][6]->move('G', 7, 'F', 7, board) << '\n';
+    std::cout << board[6][6]->move('G', 7, 'G', 8, board) << '\n';
+    std::cout << board[6][6]->move('G', 7, 'H', 7, board) << '\n';
+    std::cout << board[6][6]->move('G', 7, 'G', 6, board) << '\n';
+    std::cout << board[6][6]->move('G', 7, 'F', 8, board) << '\n';
     std::cout << board[6][6]->move('G', 7, 'C', 7, board) << '\n';
+    std::cout << board[6][6]->move('G', 7, 'E', 7, board) << '\n';
+    std::cout << board[6][6]->move('G', 7, 'A', 7, board) << '\n';
+    std::cout << board[6][6]->move('G', 7, 'G', 1, board) << '\n';
+    std::cout << board[6][6]->move('G', 7, 'C', 3, board) << '\n';
+    std::cout << board[6][6]->move('G', 7, 'E', 4, board) << '\n';
+
     return 0;
 }
