@@ -8,25 +8,24 @@
 #define RESET "\033[0m"
 #define RED "\033[31m"
 
-void outputBoard(chessPiece***);
-void clearBoard(chessPiece***);
+void outputBoard(chessPiece ***);
+void clearBoard(chessPiece ***);
 
 int main()
 {
-	chessPiece *** board;
+	chessPiece ***board;
 
-	board = new chessPiece**[8];
+	board = new chessPiece **[8];
 
 	for (int i = 0; i < 8; i++)
-		board[i] = new chessPiece*[8];
+		board[i] = new chessPiece *[8];
 
 	for (int i = 0; i < 8; i++)
 		for (int j = 0; j < 8; j++)
 			board[i][j] = nullptr;
 
-
-	//place the black chess pieces onto
-	//the board
+	// place the black chess pieces onto
+	// the board
 	board[0][3] = new knightType(false);
 	board[1][0] = new rookType(false);
 	board[1][2] = new bishopType(false);
@@ -35,15 +34,15 @@ int main()
 	board[1][6] = new rookType(false);
 	board[2][3] = new knightType(false);
 
-	//place the red chess pieces onto
-	//the board
+	// place the red chess pieces onto
+	// the board
 	board[5][4] = new knightType(true);
 	board[6][1] = new rookType(true);
 	board[6][3] = new bishopType(true);
 	board[6][4] = new queenType(true);
 	board[6][5] = new bishopType(true);
 	board[6][7] = new rookType(true);
-	board[7][4] = new knightType(true);	
+	board[7][4] = new knightType(true);
 
 	outputBoard(board);
 
@@ -57,7 +56,7 @@ int main()
 
 	while (redPieces > 0 && blackPieces > 0)
 	{
-		//Your Code Goes here	
+		// Your Code Goes herel
 	}
 
 	clearBoard(board);
@@ -65,13 +64,58 @@ int main()
 	return 0;
 }
 
-void outputBoard(chessPiece *** board)
+void outputBoard(chessPiece ***board)
 {
-	
+	std::cout << " ";
+	for (int i = 1; i < 9; i++)
+	{
+		std::cout << "  " << i;
+	}
+	std::cout << '\n';
+	for (int i = 0; i < 8; i++)
+	{
+		std::cout << static_cast<char>('A' + i);
+		for (int j = 0; j < 8; j++)
+		{
+			if (board[i][j] != nullptr)
+			{
+				if (board[i][j]->getPlayerType() == true)
+				{
+					std::cout << RED;
+				}
+			}
+			if (dynamic_cast<queenType *>(board[i][j]))
+			{
+				std::cout << "  Q";
+			}
+			else if (dynamic_cast<knightType *>(board[i][j]))
+			{
+				std::cout << "  K";
+			}
+			else if (dynamic_cast<bishopType *>(board[i][j]))
+			{
+				std::cout << "  B";
+			}
+			else if (dynamic_cast<rookType *>(board[i][j]))
+			{
+				std::cout << "  R";
+			}
+			else
+			{
+				std::cout << "  -";
+			}
+			std::cout << RESET;
+		}
+		std::cout << '\n';
+	}
 }
 
-
-void clearBoard(chessPiece *** board)
+void clearBoard(chessPiece ***board)
 {
-	
+	for (int i = 0; i < 8; i++)
+		for (int j = 0; j < 8; j++)
+			if (board[i][j] != nullptr)
+			{
+				delete board[i][j];
+			}
 }
