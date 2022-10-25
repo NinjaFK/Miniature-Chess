@@ -38,9 +38,6 @@ bool bishopType::move(char startRow, int startCol, char endRow,
 			return false;
 		}
 	}
-
-	std::cout << "line 49\n";
-
 	return true;
 }
 // when piece is deleted cout that it was taken
