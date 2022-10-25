@@ -23,33 +23,29 @@ bool rookType::move(char startRow, int startCol, char endRow,
 			return false;
 		}
 	}
-	std::cout << "line 26\n";
-	std::cout << startR << '\n'
-			  << startC << '\n'
-			  << endR << '\n'
-			  << endC << '\n'
-			  << difR << '\n'
-			  << difc << '\n'
-			  << '\n';
 	// check if move possible
 	if (startR != endR && startC != endC)
 	{
 		return false;
 	}
 	// check if along the way is not null
-	std::cout << "line 40\n";
 	for (int i = 1; i < abs(difR) || i < abs(difc); i++)
 	{
-		std::cout << "Line 42" << '\n'
-				  << (difR) / abs(difR) << '\n'
-				  << (difc) / abs(difc) << '\n'
-				  << '\n'
-				  << startR + (-i * ((difR) / abs(difR))) << '\n'
-				  << startC + (-i * ((difc) / abs(difc))) << '\n';
-		if (board[startR + (-i * ((difR) / abs(difR)))]
-				 [startC + (-i * ((difc) / abs(difc)))] != nullptr)
+		if (startR == endR)
 		{
-			return false;
+			if (board[startR]
+					 [startC + (-i * ((difc) / abs(difc)))] != nullptr)
+			{
+				return false;
+			}
+		}
+		else
+		{
+			if (board[startR + (-i * ((difR) / abs(difR)))]
+					 [startC] != nullptr)
+			{
+				return false;
+			}
 		}
 	}
 	return true;
