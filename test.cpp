@@ -1,12 +1,15 @@
 #include <iostream>
-//#include "knightType.h"
+#include "knightType.h"
 #include "chessPiece.h"
-//#include "rookType.h"
-//#include "bishopType.h"
+#include "rookType.h"
+#include "bishopType.h"
 #include "queenType.h"
 
 #define RESET "\033[0m"
 #define RED "\033[31m"
+
+void outputBoard(chessPiece ***);
+void clearBoard(chessPiece ***);
 
 int main()
 {
@@ -98,5 +101,56 @@ int main()
     std::cout << board[6][6]->move('G', 7, 'B', 5, board) << '\n';
     std::cout << board[6][6]->move('G', 7, 'C', 8, board) << '\n'; */
 
+    outputBoard(board);
+
+    clearBoard(board);
     return 0;
+}
+
+void outputBoard(chessPiece ***board)
+{
+    std::cout << " ";
+    for (int i = 1; i < 9; i++)
+    {
+        std::cout << "  " << i;
+    }
+    std::cout << '\n';
+    for (int i = 0; i < 8; i++)
+    {
+        std::cout << static_cast<char>('A' + i);
+        for (int j = 0; j < 8; j++)
+        {
+            if (dynamic_cast<queenType *>(board[i][j]))
+            {
+                std::cout << "  Q";
+            }
+            else if (dynamic_cast<knightType *>(board[i][j]))
+            {
+                std::cout << "  K";
+            }
+            else if (dynamic_cast<bishopType *>(board[i][j]))
+            {
+                std::cout << "  B";
+            }
+            else if (dynamic_cast<rookType *>(board[i][j]))
+            {
+                std::cout << "  R";
+            }
+            else
+            {
+                std::cout << "  -";
+            }
+        }
+        std::cout << '\n';
+    }
+}
+
+void clearBoard(chessPiece ***board)
+{
+    for (int i = 0; i < 8; i++)
+        for (int j = 0; j < 8; j++)
+            if (board[i][j] != nullptr)
+            {
+                delete board[i][j];
+            }
 }
