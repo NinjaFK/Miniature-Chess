@@ -1,9 +1,13 @@
+/*
+	Name: Brian Nieh, 5008139573, 1005, 5
+	Description: Miniature Chess
+	Input: Sequence of moves
+	Output: Game of chess
+*/
 #include "rookType.h"
 #include <iostream>
 // calls parent class constuctor and sets color
-rookType::rookType(bool color) : chessPiece(color)
-{
-}
+rookType::rookType(bool color) : chessPiece(color){}
 // returns a bool if allowed
 bool rookType::move(char startRow, int startCol, char endRow,
 					int endCol, chessPiece ***board)
@@ -17,6 +21,7 @@ bool rookType::move(char startRow, int startCol, char endRow,
 	// checks if end pos is not null or if has a piece of the same color
 	if (board[endR][endC] != nullptr)
 	{
+		// checks if the of color is the same as the piece calling it
 		if (board[endR][endC]->getPlayerType() ==
 			this->getPlayerType())
 		{
@@ -31,6 +36,7 @@ bool rookType::move(char startRow, int startCol, char endRow,
 	// check if along the way is not null
 	for (int i = 1; i < abs(difR) || i < abs(difc); i++)
 	{
+		// this is avoid doing 0/0 which is one
 		if (startR == endR)
 		{
 			if (board[startR]
