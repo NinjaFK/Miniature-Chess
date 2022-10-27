@@ -1,3 +1,9 @@
+/*
+	Name: Brian Nieh, 5008139573, 1005, 5
+	Description: Miniature Chess
+	Input: Sequence of moves
+	Output: Game of chess
+*/
 #include "bishopType.h"
 #include <cmath>
 #include <iostream>

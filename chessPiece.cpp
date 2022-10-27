@@ -1,3 +1,9 @@
+/*
+	Name: Brian Nieh, 5008139573, 1005, 5
+	Description: Miniature Chess
+	Input: Sequence of moves
+	Output: Game of chess
+*/
 #include <iostream>
 #include "chessPiece.h"
 // sets the color based into base class color
