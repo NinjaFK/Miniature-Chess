@@ -56,9 +56,49 @@ int main()
 
 	while (redPieces > 0 && blackPieces > 0)
 	{
-		// Your Code Goes herel
+		std::cout << "\nEnter starting coordinates (" << turn << "): ";
+		std::cin >> row1 >> col1;
+		col1--;
+		if (board[row1 - 'A'][col1] == nullptr)
+		{
+			std::cout << "Starting coordinate is empty!";
+			continue;
+		}
+		if (board[row1 - 'A'][col1]->getPlayerType() !=
+			turn)
+		{
+			std::cout << "Invalid piece selected.";
+			continue;
+		}
+		std::cout << "Enter ending coordinates: ";
+		std::cin >> row2 >> col2;
+		col2--;
+		if (board[row1 - 'A'][col1]->move(row1, col1 + 1, row2, col2 + 1, board))
+		{
+			if (board[row2 - 'A'][col2] != nullptr)
+			{
+				delete board[row2 - 'A'][col2];
+				board[row2 - 'A'][col2] = nullptr;
+			}
+			board[row2 - 'A'][col2] = board[row1 - 'A'][col1];
+			board[row1 - 'A'][col1] = nullptr;
+			outputBoard(board);
+			turn = !turn;
+		}
+		else if (board[row1 - 'A'][col1]->move(row1, col1 + 1, row2, col2 + 1, board) == false)
+		{
+			std::cout << "\nInvalid move!";
+		}
 	}
 
+	if (blackPieces = 0)
+	{
+		std::cout << "Black wins\n";
+	}
+	else
+	{
+		std::cout << "Red wins\n";
+	}
 	clearBoard(board);
 
 	return 0;
@@ -75,6 +115,7 @@ void outputBoard(chessPiece ***board)
 	for (int i = 0; i < 8; i++)
 	{
 		std::cout << static_cast<char>('A' + i);
+		std::cout << " ";
 		for (int j = 0; j < 8; j++)
 		{
 			if (board[i][j] != nullptr)
@@ -86,23 +127,23 @@ void outputBoard(chessPiece ***board)
 			}
 			if (dynamic_cast<queenType *>(board[i][j]))
 			{
-				std::cout << "  Q";
+				std::cout << " Q ";
 			}
 			else if (dynamic_cast<knightType *>(board[i][j]))
 			{
-				std::cout << "  K";
+				std::cout << " K ";
 			}
 			else if (dynamic_cast<bishopType *>(board[i][j]))
 			{
-				std::cout << "  B";
+				std::cout << " B ";
 			}
 			else if (dynamic_cast<rookType *>(board[i][j]))
 			{
-				std::cout << "  R";
+				std::cout << " R ";
 			}
 			else
 			{
-				std::cout << "  -";
+				std::cout << " - ";
 			}
 			std::cout << RESET;
 		}
